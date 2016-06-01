@@ -10,21 +10,26 @@ var lineMaker = function(limitz, stringToAdd) {
 	return stringMade;
 };
 
-var makeTree = function () {
-	var userCharacter = document.getElementById("userInputCharacter").value;
-	var treeHeight = document.getElementById("treeHeight").value;
 
-	if ((userCharacter.length !== 1) || (treeHeight.length < 1)) {
+var treeSpecs = new Object();
+
+
+
+var makeTree = function () {
+	treeSpecs.userCharacter = document.getElementById("userInputCharacter").value;
+	treeSpecs.treeHeight = document.getElementById("treeHeight").value;
+
+	if ((treeSpecs.userCharacter.length !== 1) || (treeSpecs.treeHeight.length < 1)) {
 		alert("Both fields must have the correct value")
 	};
 
-	if (isNaN(treeHeight) === true) {
+	if (isNaN(treeSpecs.treeHeight) === true) {
 		alert("You gotsa gives me a numba")
 	};
 
-	if (userCharacter.length === 1) {
-		for (var i = 1; i <= treeHeight; i++) {
-			console.log(lineMaker(treeHeight - i, " ") + lineMaker((i * 2) - 1, userCharacter))
+	if (treeSpecs.userCharacter.length === 1) {
+		for (var i = 1; i <= treeSpecs.treeHeight; i++) {
+			console.log(lineMaker(treeSpecs.treeHeight - i, " ") + lineMaker((i * 2) - 1, treeSpecs.userCharacter))
 		};
 	};
 }
